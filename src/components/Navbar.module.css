@@ -1,38 +1,48 @@
-.navbar{
+.navbar {
     display: flex;
     box-shadow: rgba(0, 0, 0, .15) 0px -2px 10 0px;
     justify-content: space-between;
     align-items: center;
     padding: .5em 2em;
 }
- 
-.brand{
+
+.brand {
     font-size: 1.2em;
 }
- 
-.brand span{
+
+.brand span {
     font-weight: 900;
     text-transform: uppercase;
 }
- 
-.links_list{
+
+.links_list {
     display: flex;
     list-style: none;
 }
- 
-.links_list li a{
+
+.links_list li {
+    margin-right: 1em;
+}
+
+.links_list li a {
     padding: .4em .6em;
 }
- 
-.active{
+
+.active {
     background-color: #000;
     color: #fff;
 }
-.logout{
+
+.logout {
     width: 60px;
     background-color: darkturquoise;
     border: none;
     border-radius: 10px;
     padding: 5px;
     cursor: pointer;
+}
+
+.exit {
+    border: none;
+    background-color: transparent;
 }
