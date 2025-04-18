@@ -1,13 +1,14 @@
 .navbar{
     display: flex;
-    box-shadow: rgba(0, 0, 0, .15) 0px -2px 10 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px -2px 10px 0px;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 2em;
+    padding: 0.5em 2em;
 }
  
 .brand{
     font-size: 1.2em;
+    padding: 0.5em 2em;
 }
  
 .brand span{
@@ -19,20 +20,20 @@
     display: flex;
     list-style: none;
 }
+
+.links_list li{
+    margin-right: 1em;
+}
  
 .links_list li a{
-    padding: .4em .6em;
+    padding: 0.4em 0.6em;
 }
  
 .active{
     background-color: #000;
     color: #fff;
 }
-.logout{
-    width: 60px;
-    background-color: darkturquoise;
+.exit{
+    background-color: transparent;
     border: none;
-    border-radius: 10px;
-    padding: 5px;
-    cursor: pointer;
 }
