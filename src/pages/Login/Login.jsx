@@ -28,8 +28,8 @@ const Login = () => {
     }
   }, [authError]);
 
-  return;
-  <div ClassName={styles.login}>
+  return(
+  <div className={styles.login}>
     <h1>Entrar</h1>
     <p>Faça login em nossa plataforma de desenvolvedores</p>
     <form onSubmit={handlerSubmit}>
@@ -59,7 +59,8 @@ const Login = () => {
       {loading && <button className="btn">Aguarde...</button>}
       {error && <p>{error}</p>}
     </form>
-  </div>;
+  </div>
+  )
 };
 
 export default Login;

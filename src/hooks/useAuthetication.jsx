@@ -6,13 +6,12 @@ import {
     updateProfile,
     signOut,
 } from "firebase/auth"
+import { auth } from "../firebase/config"
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(null)
     const [cancelled, setCancelled] = useState(false)
-
-    const auth = getAuth()
 
     function checkIfIsCancelled() {
         if (cancelled) {
