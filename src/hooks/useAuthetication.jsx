@@ -6,7 +6,7 @@ import {
     updateProfile,
     signOut,
 } from "firebase/auth"
-import { auth } from "../firebase/config";
+import { auth } from "../firebase/config"
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null)
