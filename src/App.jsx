@@ -24,9 +24,9 @@ function App() {
     })
   }, [auth])
 
-  const loadingUser = user == undefined
+  const loadingUser = user === undefined
 
-  if (!loadingUser) {
+  if (loadingUser) {
     return <p>Carregando a página...</p>
   }
 
