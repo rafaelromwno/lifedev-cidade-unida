@@ -18,7 +18,7 @@ const PostDetail = ({ post }) => {
                 </div>
                 <p className={styles.createby}>data: {post.createAt}</p>
                 <Link to={`/posts/${postMessage.id}`} className="btn btn-outline">
-                    Ler Postagem
+                    Ler Postagem!
                 </Link>
             </div>
         </>
