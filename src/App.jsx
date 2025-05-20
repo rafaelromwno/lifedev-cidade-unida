@@ -11,21 +11,22 @@ import { AuthProvider } from './context/AuthContext'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { useAuthentication } from './hooks/useAuthetication'
+import About from './pages/About/About'
 
 function App() {
 
   const [user, setUser] = useState(undefined)
   const { auth } = useAuthentication()
 
-  const loadingUser = user == undefined
-
   useEffect(() => {
-    onAuthStateChanged(auth, () => {
+    onAuthStateChanged(auth, (user) => {
       setUser(user)
     })
   }, [auth])
 
-  if (loadingUser) {
+  const loadingUser = user == undefined
+
+  if (!loadingUser) {
     return <p>Carregando a página...</p>
   }
 
@@ -39,10 +40,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to="/login" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
                 <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
                 <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
-                <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to="/login" />} />
               </Routes>
             </div>
             <Footer />

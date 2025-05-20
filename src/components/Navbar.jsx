@@ -1,11 +1,13 @@
 import styles from "./Navbar.module.css"
 import { NavLink } from "react-router-dom"
-import { useAuthentication } from "../hooks/useAuthetication";
-import { useAuthValue } from "../context/AuthContext";
+import { useAuthentication } from "../hooks/useAuthetication"
+import { useAuthValue } from "../context/AuthContext"
 
 const Navbar = () => {
 
+  const { logout } = useAuthentication()
   const { user } = useAuthValue()
+  console.log(user)
 
   return (
     <>
@@ -57,11 +59,11 @@ const Navbar = () => {
             >Sobre
             </NavLink>
           </li>
-          <button className={styles.exit}>Exit</button>
+          <button onClick={logout} className={styles.exit}>Exit</button>
         </ul>
       </nav>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
