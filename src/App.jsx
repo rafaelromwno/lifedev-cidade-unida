@@ -10,6 +10,7 @@ import CreatePost from "./pages/CreatePost/CreatePost"
 import { AuthProvider } from './context/AuthContext'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
+import imageLoad from '/loading.gif'
 import { useAuthentication } from './hooks/useAuthetication'
 
 function App() {
@@ -20,13 +21,15 @@ function App() {
   const loadingUser = user == undefined
 
   useEffect(() => {
-    onAuthStateChanged(auth, () => {
+    onAuthStateChanged(auth, (user) => {
       setUser(user)
     })
   }, [auth])
 
-  if (loadingUser) {
-    return <p>Carregando a página...</p>
+  if (!loadingUser) {
+    return (
+      <img src={imageLoad} alt="Carregando a página..." />
+    )
   }
 
   return (
@@ -38,11 +41,12 @@ function App() {
             <div className='container'>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                
+                <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to="/login" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
                 <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
                 <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
-                <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to="/login" />} />
+
               </Routes>
             </div>
             <Footer />
