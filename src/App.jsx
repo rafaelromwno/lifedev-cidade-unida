@@ -11,14 +11,14 @@ import { AuthProvider } from './context/AuthContext'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { useAuthentication } from './hooks/useAuthetication'
-
+import Search from './pages/Search/Search'
 
 function App() {
 
   const [user, setUser] = useState(undefined)
   const { auth } = useAuthentication()
 
-  const loadingUser = user == undefined
+  const loadingUser = user === undefined
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -26,7 +26,7 @@ function App() {
     })
   }, [auth])
 
-  if (!loadingUser) {
+  if (loadingUser) {
     return <p>Carregando a página...</p>
   }
 
@@ -44,6 +44,7 @@ function App() {
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
                 <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
                 <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+                <Route path="/search" element={!user ? <Search /> : <Navigate to="/" />} />
 
               </Routes>
             </div>

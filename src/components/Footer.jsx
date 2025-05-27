@@ -6,8 +6,8 @@ const Footer = () => {
     <>
     <footer className={styles.footer}>
         <h3>Plataforma de Postagens para Desenvolvedores</h3>
-        <p>Compartilhamento de experiências de Nomade Life Dev</p>
-        <p>Cidade Unida&#174; 2025 &#169;</p>
+        <p>Compartilhamento de experiências de Desenvolvedor</p>
+        <p>Cidade Integra &#169; 2025</p>
     </footer>
     </>
   )
