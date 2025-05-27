@@ -7,6 +7,22 @@ import Register from "./pages/Register/Register"
 import './App.css'
 
 function App() {
+
+  const [user, setUser] = useState(undefined)
+  const { auth } = useAuthentication()
+
+  const loadingUser = user === undefined
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user)
+    })
+  }, [auth])
+
+  if (loadingUser) {
+    return <p>Carregando a página...</p>
+  }
+
   return (
     <div>
       <BrowserRouter>

@@ -1,0 +1,17 @@
+.dashboard {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard h2 {
+    font-size: 2.2em;
+    margin-bottom: 0.5em;
+}
+
+.dashboard p {
+    color: #aaa;
+    margin-bottom: 1em;
+}
