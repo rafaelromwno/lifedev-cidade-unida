@@ -2,6 +2,13 @@ import { Link } from "react-router-dom"
 import styles from "./PostDetail.module.css"
 
 const PostDetail = ({ post }) => {
+
+    const dataFormatada = post.createAt?.toDate?.().toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+    }) || "Data não disponível"
+
     return (
         <>
             <div className={styles.post_detail}>
@@ -16,8 +23,8 @@ const PostDetail = ({ post }) => {
                         </p>
                     ))}
                 </div>
-                <p className={styles.createby}>data: {post.createAt}</p>
-                <Link to={`/posts/${postMessage.id}`} className="btn btn-outline">
+                <p className={styles.createby}>data: {dataFormatada}</p>
+                <Link to={`/posts/${post.id}`} className="btn btn-outline">
                     Ler Postagem!
                 </Link>
             </div>

@@ -12,6 +12,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { useAuthentication } from './hooks/useAuthetication'
 import Search from './pages/Search/Search'
+import Post from './pages/Post/Post'
 
 function App() {
 
@@ -40,11 +41,12 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
 
-                <Route path="/post/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
+                <Route path="/posts/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
                 <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
                 <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
                 <Route path="/search" element={!user ? <Search /> : <Navigate to="/" />} />
+                <Route path='/posts/:id' element={user ? <Post /> : <Navigate to="/login" />} />
 
               </Routes>
             </div>
