@@ -7,12 +7,14 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Dashboard from "./pages/Dashboard/Dashboard"
 import CreatePost from "./pages/CreatePost/CreatePost"
+import Search from './pages/Search/Search'
+import Post from './pages/Post/Post'
+import EditPost from './pages/EditPost/EditPost'
 import { AuthProvider } from './context/AuthContext'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { useAuthentication } from './hooks/useAuthetication'
-import Search from './pages/Search/Search'
-import Post from './pages/Post/Post'
+
 
 function App() {
 
@@ -20,6 +22,10 @@ function App() {
   const { auth } = useAuthentication()
 
   const loadingUser = user === undefined
+
+  
+  
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -42,6 +48,7 @@ function App() {
                 <Route path="/" element={<Home />} />
 
                 <Route path="/posts/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
+                <Route path="/posts/edit/:id" element={ user ? <EditPost /> : <Navigate to="/login" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
                 <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
                 <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
