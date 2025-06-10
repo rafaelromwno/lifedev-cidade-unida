@@ -2,6 +2,8 @@ import { useState, useEffect, useReducer } from "react"
 import { db } from "../firebase/config"
 import { doc, updateDoc } from "firebase/firestore"
 
+import {useAuthValue} from '../context/AuthContext'
+
 const initialState = {
     loading: null,
     error: null,
@@ -20,9 +22,10 @@ const updateReducer = (state, action) => {
     }
 }
 
-export const useUpdateDocument = () => {
+export const useUpdateDocument = (docCollection) => {
     const [response, dispatch] = useReducer(updateReducer, initialState)
     const [cancelled, setCancelled] = useState(false)
+
 
     const checkCancelBeforeDispatch = (action) => {
         if (!cancelled) {
@@ -52,6 +55,7 @@ export const useUpdateDocument = () => {
         }
     }
 
+    
     useEffect(() => {
         return () => setCancelled(true)
     }, [])
