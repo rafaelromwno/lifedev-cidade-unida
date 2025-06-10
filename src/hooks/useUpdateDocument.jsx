@@ -20,7 +20,7 @@ const updateReducer = (state, action) => {
     }
 }
 
-export const useUpdateDocument = () => {
+export const useUpdateDocument = (docCollection) => {
     const [response, dispatch] = useReducer(updateReducer, initialState)
     const [cancelled, setCancelled] = useState(false)
 
