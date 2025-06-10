@@ -1,4 +1,4 @@
-import styles from '../EditPost.module.css'
+import styles from './EditPost.module.css'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthValue } from '../../context/AuthContext'
@@ -125,7 +125,7 @@ const EditPost = () => {
                         {!response.loading && <button className="btn">Editar</button>}
                         {response.loading && (
                             <button className="btn" disabled>
-                                Aguarde.. .
+                                Aguarde...
                             </button>
                         )}
                         {(response.error || formError) && (

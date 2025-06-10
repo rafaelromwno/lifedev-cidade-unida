@@ -20,8 +20,6 @@ const Home = () => {
         }
     }
 
-    console.log(loading)
-
     return (
         <>
             <div className={styles.home}>

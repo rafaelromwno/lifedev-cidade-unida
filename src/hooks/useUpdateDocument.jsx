@@ -20,7 +20,7 @@ const updateReducer = (state, action) => {
     }
 }
 
-export const useUpdateDocument = () => {
+export const useUpdateDocument = (docCollection) => {
     const [response, dispatch] = useReducer(updateReducer, initialState)
     const [cancelled, setCancelled] = useState(false)
 
@@ -29,7 +29,7 @@ export const useUpdateDocument = () => {
             dispatch(action)
         }
     }
-
+    
     const updateDocument = async (uid, data) => {
         checkCancelBeforeDispatch({ type: "LOADING" })
 

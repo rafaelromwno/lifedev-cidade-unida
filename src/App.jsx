@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import { useAuthentication } from './hooks/useAuthetication'
 import Search from './pages/Search/Search'
 import Post from './pages/Post/Post'
+import EditPost from './pages/EditPost/EditPost'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
 
+                <Route path="/posts/edit/:id" element={ user? <EditPost/> : <Navigate to="/login" />} />
                 <Route path="/posts/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
                 <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
